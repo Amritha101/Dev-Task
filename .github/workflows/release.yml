@@ -8,11 +8,7 @@ on:
       - beta
 
 jobs:
-  test:
-    name: Test and lint
-    uses: open-sauced/open-sauced/.github/workflows/development.yml@main
-
-  docker:
+ docker:
     name: Build container
     runs-on: ubuntu-latest
     steps:
@@ -65,23 +61,7 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 16
-
-      - name: "🔧 install npm@latest"
-        run: npm i -g npm@latest
-
-      - name: "📦 install dependencies"
-        uses: bahmutov/npm-install@v1
-
-      - name: "📊 repository visualizer"
-        id: diagram
-        uses: githubocto/repo-visualizer@0.7.1
-        with:
-          excluded_paths: "node_modules,build,.storybook,.netlify,.github,npm-shrinkwrap.json"
-          output_file: "public/diagram.svg"
-          should_push: false
-          root_path: "src/"
-          artifact_name: "diagram"
-
+     
       - name: "🚀 static app"
         run: npm run build
 
