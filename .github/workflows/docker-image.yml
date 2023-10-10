@@ -26,14 +26,6 @@ jobs:
       pull-requests: write
       repository-projects: write
     steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: static-site
-    - name: Archive site content
-      uses: thedoctor0/zip-release@master
-      with:
-        filename: site.zip
     - name: Create Github release
       uses: actions/create-release@v1
       env:
